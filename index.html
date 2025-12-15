@@ -10,25 +10,11 @@
 <style>
 /* BASE STYLES */
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Arial',sans-serif;}
-body{background:#0a0a0a;color:#fff;line-height:1.6;scroll-behavior:smooth;overflow-x:hidden;transition:all 0.3s;}
+body{background:#0a0a0a;color:#fff;line-height:1.6;scroll-behavior:smooth;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;transition:transform 0.3s;}
 img:hover{transform:scale(1.05);}
 .container{max-width:1100px;margin:auto;padding:20px;position:relative;z-index:2;}
-
-/* DARK MODE */
-body.dark-mode{background:#f5f5f5;color:#111;}
-body.dark-mode header{background:linear-gradient(-45deg,#fff,#ddd,#fff,#ddd);}
-body.dark-mode .section{background:#eaeaea;color:#111;}
-body.dark-mode .section p,.body.dark-mode ul li,.body.dark-mode .faq div{color:#222;}
-body.dark-mode .counter-box{background:linear-gradient(45deg,#ddd,#eee,#ddd,#eee);}
-body.dark-mode .testimonial{background:#f0f0f0;color:#111;}
-body.dark-mode .payment{background:#ddd;color:#111;}
-body.dark-mode .fees-table th{background:#25D366;color:#fff;}
-body.dark-mode footer{background:#f5f5f5;color:#111;box-shadow:0 -4px 25px rgba(0,0,0,.1);}
-body.dark-mode .notice{background:#eee;color:#111;border-left-color:#ff5555;}
-.dark-mode-toggle{position:fixed;top:20px;right:20px;padding:10px 15px;background:#25D366;color:#000;border-radius:8px;font-weight:bold;cursor:pointer;z-index:10000;box-shadow:0 5px 20px rgba(37,211,102,.5);transition:all 0.3s;}
-.dark-mode-toggle:hover{transform:scale(1.05);}
 
 /* PARTICLE CANVAS */
 #particle-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
@@ -66,12 +52,6 @@ ul li:hover{color:#25D366;transform:translateX(5px);}
 .counter-box h3{font-size:2.2rem;color:#25D366;margin-bottom:10px;}
 .counter-box p{font-size:1rem;color:#ccc;}
 
-/* SECURITY BADGES */
-.badges{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:30px;}
-.badge-box{display:flex;flex-direction:column;align-items:center;background:#151515;padding:20px;border-radius:12px;min-width:140px;box-shadow:0 4px 15px rgba(0,0,0,0.5);}
-.badge-box img{width:60px;height:60px;margin-bottom:10px;}
-.badge-box p{color:#ccc;text-align:center;font-size:0.95rem;}
-
 /* TESTIMONIALS */
 .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-top:40px;}
 .testimonial{background:#151515;padding:30px;border-radius:14px;font-size:1rem;color:#ccc;transition:all 0.3s;box-shadow:0 4px 25px rgba(0,0,0,0.5);}
@@ -98,13 +78,16 @@ ul li:hover{color:#25D366;transform:translateX(5px);}
 
 /* FINAL CTA */
 .cta{text-align:center;margin-top:50px;}
+.cta .btn{margin:10px 10px 0 0;}
 
 /* FOOTER */
 footer{background:#0a0a0a;margin-top:80px;padding:60px 20px;text-align:center;font-size:1rem;color:#777;box-shadow:0 -4px 25px rgba(0,0,0,.5);}
 
-/* FLOATING WHATSAPP BUTTON */
+/* FLOATING BUTTONS */
 .whatsapp-float{position:fixed;bottom:25px;right:25px;background:#25D366;color:#000;border-radius:50%;width:70px;height:70px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;z-index:1000;box-shadow:0 8px 30px rgba(37,211,102,.5);transition:all 0.3s;}
 .whatsapp-float:hover{transform:scale(1.15);box-shadow:0 12px 35px rgba(37,211,102,.6);}
+.telegram-float{position:fixed;bottom:110px;right:25px;background:#0088cc;color:#fff;border-radius:50%;width:70px;height:70px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;z-index:1000;box-shadow:0 8px 30px rgba(0,136,204,.5);transition:all 0.3s;}
+.telegram-float:hover{transform:scale(1.15);box-shadow:0 12px 35px rgba(0,136,204,.6);}
 
 /* RESPONSIVE */
 @media(max-width:600px){
@@ -112,14 +95,11 @@ footer{background:#0a0a0a;margin-top:80px;padding:60px 20px;text-align:center;fo
   header h1{font-size:2.2rem;}
   .section h2{font-size:2rem;}
   .counters{flex-direction:column;gap:25px;}
-  .badges{flex-direction:column;gap:20px;}
 }
 </style>
 </head>
 
 <body>
-
-<div class="dark-mode-toggle" id="darkModeToggle">🌙 Dark Mode</div>
 
 <canvas id="particle-canvas"></canvas>
 <div id="progress-container"><div id="progress-bar"></div></div>
@@ -137,35 +117,28 @@ footer{background:#0a0a0a;margin-top:80px;padding:60px 20px;text-align:center;fo
     <li>✔️ High-level VIP fixed correct score selections</li>
     <li>✔️ Controlled and verified member access</li>
     <li>✔️ Professional stake management guidance</li>
-    <li>✔️ Direct WhatsApp & Telegram communication</li>
+    <li>✔️ Direct WhatsApp communication</li>
     <li>✔️ Registration required before VIP access</li>
   </ul>
 </section>
 
 <section class="section container">
-  <h2>VIP Success Stats</h2>
-  <div class="counters">
-    <div class="counter-box"><h3 class="counter" data-target="95">0</h3><p>% Accuracy Last 30 Days</p></div>
-    <div class="counter-box"><h3 class="counter" data-target="1200">0</h3><p>VIP Members</p></div>
-    <div class="counter-box"><h3 class="counter" data-target="3500">0</h3><p>Matches Provided</p></div>
-  </div>
-</section>
-
-<section class="section container">
-  <h2>Security & Trust</h2>
-  <div class="badges">
-    <div class="badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2910/2910765.png" alt="Verified Payment"><p>Verified Payments</p></div>
-    <div class="badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2910/2910792.png" alt="Confidential Info"><p>Private & Confidential</p></div>
-    <div class="badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2910/2910828.png" alt="Safe System"><p>Secure System</p></div>
-  </div>
+  <h2>Why Choose Elite VIP</h2>
+  <ul>
+    <li>✅ Trusted by over 1,200 VIP members globally</li>
+    <li>✅ Accurate match predictions with 3,500+ matches provided</li>
+    <li>✅ 15 countries served with verified registrations</li>
+    <li>✅ Professional support and guidance for serious bettors</li>
+    <li>✅ Safe and verified payment system</li>
+  </ul>
 </section>
 
 <section class="section container">
   <h2>Step-by-Step Registration</h2>
   <ul>
-    <li>1️⃣ Click WhatsApp or Telegram below</li>
+    <li>1️⃣ Click the floating WhatsApp or Telegram button below</li>
     <li>2️⃣ Provide your details and confirm identity</li>
-    <li>3️⃣ Complete payment securely</li>
+    <li>3️⃣ Complete payment through our secure system</li>
     <li>4️⃣ Get verified and added to the official Elite VIP channel</li>
     <li>5️⃣ Receive VIP fixed match details directly</li>
   </ul>
@@ -189,6 +162,27 @@ footer{background:#0a0a0a;margin-top:80px;padding:60px 20px;text-align:center;fo
 </section>
 
 <section class="section container">
+  <h2>Elite Stats</h2>
+  <div class="counters">
+    <div class="counter-box"><h3 class="counter" data-target="1200">0</h3><p>VIP Members</p></div>
+    <div class="counter-box"><h3 class="counter" data-target="15">0</h3><p>Countries Served</p></div>
+    <div class="counter-box"><h3 class="counter" data-target="3500">0</h3><p>Matches Provided</p></div>
+  </div>
+</section>
+
+<section class="section container">
+  <h2>VIP Rules & Conditions</h2>
+  <ul>
+    <li>❌ No free matches post-registration</li>
+    <li>❌ No refunds after access</li>
+    <li>✔️ Strict adherence to staking recommendations</li>
+    <li>✔️ VIP information must remain confidential</li>
+    <li>✔️ Professional and responsible use expected</li>
+  </ul>
+  <div class="notice">⚠️ Only experienced and responsible users are allowed. Registration confirms acceptance of all terms.</div>
+</section>
+
+<section class="section container">
   <h2>Member Feedback</h2>
   <div class="testimonials">
     <div class="testimonial"><strong>VIP Member</strong>Consistent structure and serious administration. Not for unserious users.</div>
@@ -202,14 +196,14 @@ footer{background:#0a0a0a;margin-top:80px;padding:60px 20px;text-align:center;fo
   <div class="faq">
     <div><strong>Is registration compulsory?</strong>Yes. VIP information is only available after registration.</div>
     <div><strong>Do you offer free trials?</strong>No. This is a closed, professional VIP service.</div>
-    <div><strong>How do I join?</strong>Click WhatsApp or Telegram below and follow registration steps.</div>
+    <div><strong>How do I join?</strong>Click the floating WhatsApp or Telegram button below and follow registration steps.</div>
     <div><strong>How is payment verified?</strong>Payment is verified before VIP access is granted.</div>
   </div>
 </section>
 
 <section class="section container cta">
   <a class="btn" href="https://wa.me/254113206503">CONTACT & REGISTER VIA WHATSAPP</a>
-  <a class="btn" href="https://t.me/coolkidtips" style="margin-left:20px;">JOIN TELEGRAM</a>
+  <a class="btn" href="https://t.me/coolkidtips" style="background:#0088cc;color:#fff;margin-left:20px;">JOIN TELEGRAM</a>
 </section>
 
 <footer>
@@ -218,13 +212,11 @@ footer{background:#0a0a0a;margin-top:80px;padding:60px 20px;text-align:center;fo
   Contact: +254113206503 | WhatsApp Only
 </footer>
 
+<!-- FLOATING BUTTONS -->
 <a href="https://wa.me/254113206503" class="whatsapp-float">💬</a>
+<a href="https://t.me/coolkidtips" class="telegram-float">📨</a>
 
 <script>
-// Dark mode toggle
-const darkToggle = document.getElementById('darkModeToggle');
-darkToggle.addEventListener('click',()=>{document.body.classList.toggle('dark-mode');});
-
 // Scroll animations
 const sections = document.querySelectorAll('header, .section');
 const observer = new IntersectionObserver(entries=>{
@@ -275,4 +267,30 @@ function animateParticles(){
     let p=particles[i];
     ctx.beginPath();
     ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(37
+    ctx.fillStyle=`rgba(37,211,102,${p.intensity})`;
+    ctx.fill();
+    p.x+=p.dx;
+    p.y+=p.dy;
+    if(p.x<0||p.x>canvas.width)p.dx*=-1;
+    if(p.y<0||p.y>canvas.height)p.dy*=-1;
+  }
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+window.addEventListener('resize',()=>{
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+});
+
+// Particle intensification on section scroll
+const particleSections = document.querySelectorAll('.section, header');
+const particleObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){particles.forEach(p=>p.intensity=0.7);}
+    else {particles.forEach(p=>p.intensity=0.3);}
+  });
+},{threshold:0.3});
+particleSections.forEach(sec=>particleObserver.observe(sec));
+</script>
+</body>
+</html>
