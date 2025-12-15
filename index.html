@@ -9,22 +9,61 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Arial',sans-serif;}
-body{background:#0a0a0a;color:#fff;line-height:1.6;}
+body{background:#0a0a0a;color:#fff;line-height:1.6;scroll-behavior:smooth;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
-img{max-width:100%;display:block;}
+img{max-width:100%;display:block;transition:transform 0.3s;}
+img:hover{transform:scale(1.1);}
+.container{max-width:1100px;margin:auto;padding:20px;position:relative;z-index:2;}
 
-.container{max-width:1100px;margin:auto;padding:20px;}
+/* PARTICLE CANVAS */
+#particle-canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+}
 
-/* HEADER / HERO */
+/* STICKY PROGRESS BAR */
+#progress-container{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:6px;
+  background:#222;
+  z-index:9999;
+}
+#progress-bar{
+  height:6px;
+  width:0%;
+  background:#25D366;
+  transition:width 0.25s;
+}
+
+/* ANIMATED BACKGROUNDS */
+@keyframes gradientSlide {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* HERO */
 header{
-  background:linear-gradient(135deg,#0b0b0b,#111);
+  background:linear-gradient(-45deg,#0b0b0b,#111,#0b0b0b,#111);
+  background-size:400% 400%;
+  animation:gradientSlide 20s ease infinite;
   padding:60px 20px;
   text-align:center;
   border-bottom:4px solid #25D366;
   position:relative;
+  opacity:0;
+  transform:translateY(-20px);
+  transition:all 1s ease-out;
+  z-index:1;
 }
-header img{max-width:120px;margin-bottom:15px;transition:transform 0.3s;}
-header img:hover{transform:scale(1.1);}
+header.show{opacity:1;transform:translateY(0);}
 header h1{font-size:3rem;margin-bottom:10px;}
 header span{color:#25D366;}
 header p{max-width:800px;margin:auto;color:#ccc;font-size:1.1rem;}
@@ -32,13 +71,25 @@ header p{max-width:800px;margin:auto;color:#ccc;font-size:1.1rem;}
 .btn:hover{transform:scale(1.08);box-shadow:0 15px 35px rgba(37,211,102,.5);}
 
 /* SECTIONS */
-.section{background:#111;margin:50px 0;border-radius:16px;padding:40px 25px;box-shadow:0 0 25px rgba(0,0,0,0.5);}
+.section{background:#111;margin:50px 0;border-radius:16px;padding:40px 25px;box-shadow:0 0 25px rgba(0,0,0,0.5);opacity:0;transform:translateY(20px);transition:all 1s ease-out;position:relative;z-index:1;}
+.section.show{opacity:1;transform:translateY(0);}
 .section h2{text-align:center;margin-bottom:25px;font-size:2.2rem;}
 .section p{text-align:center;color:#ccc;max-width:900px;margin:auto 0 25px;line-height:1.7;}
 ul{list-style:none;max-width:800px;margin:20px auto;}
 ul li{padding:12px 0;border-bottom:1px solid #222;font-size:1rem;transition:all 0.3s;}
 ul li:last-child{border:none;}
 ul li:hover{color:#25D366;transform:translateX(5px);}
+
+/* COUNTERS */
+.counters{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:30px;}
+.counter-box{
+  background:linear-gradient(45deg,#111,#222,#111,#222);
+  background-size:400% 400%;
+  animation:gradientSlide 15s ease infinite;
+  padding:25px;border-radius:12px;min-width:140px;box-shadow:0 4px 15px rgba(0,0,0,0.5);text-align:center;
+}
+.counter-box h3{font-size:2rem;color:#25D366;margin-bottom:10px;}
+.counter-box p{font-size:1rem;color:#ccc;}
 
 /* TESTIMONIALS */
 .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;margin-top:30px;}
@@ -70,39 +121,61 @@ ul li:hover{color:#25D366;transform:translateX(5px);}
 /* FOOTER */
 footer{background:#0a0a0a;margin-top:60px;padding:50px 20px;text-align:center;font-size:.9rem;color:#777;box-shadow:0 -4px 20px rgba(0,0,0,.5);}
 
+/* FLOATING WHATSAPP BUTTON */
+.whatsapp-float{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#25D366;
+  color:#000;
+  border-radius:50%;
+  width:60px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+  z-index:1000;
+  box-shadow:0 8px 25px rgba(37,211,102,.5);
+  transition:all 0.3s;
+}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 12px 35px rgba(37,211,102,.6);}
+
 /* RESPONSIVE */
 @media(max-width:600px){
   .fees-table th,.fees-table td{font-size:.9rem;padding:10px;}
   header h1{font-size:2.2rem;}
   .section h2{font-size:1.8rem;}
+  .counters{flex-direction:column;gap:20px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER / HERO -->
-<header>
+<canvas id="particle-canvas"></canvas>
+
+<div id="progress-container"><div id="progress-bar"></div></div>
+
+<header id="hero">
   <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Elite VIP Logo">
   <h1>Elite <span>VIP Fixed Matches</span></h1>
   <p>Official registration platform for Elite Company. Strictly for serious members seeking professional VIP fixed correct score matches.</p>
   <a class="btn" href="https://wa.me/254113206503">REGISTER VIA WHATSAPP</a>
 </header>
 
-<!-- ABOUT -->
 <section class="section container">
   <h2>About Elite VIP</h2>
-  <p>Elite VIP operates a closed, invitation-only system to maintain accuracy, discipline, and performance. We do not run free trials or public predictions.</p>
+  <p>Elite VIP operates a closed, invitation-only system to maintain accuracy, discipline, and performance. No free trials or public predictions.</p>
   <ul>
     <li>✔️ High-level VIP fixed correct score selections</li>
     <li>✔️ Controlled member access</li>
-    <li>✔️ Professional stake management approach</li>
+    <li>✔️ Professional stake management</li>
     <li>✔️ Direct WhatsApp support</li>
     <li>✔️ Registration required before access</li>
   </ul>
 </section>
 
-<!-- HOW IT WORKS -->
 <section class="section container">
   <h2>How It Works</h2>
   <ul>
@@ -113,24 +186,20 @@ footer{background:#0a0a0a;margin-top:60px;padding:50px 20px;text-align:center;fo
   </ul>
 </section>
 
-<!-- VIP RULES -->
 <section class="section container">
   <h2>VIP Rules & Conditions</h2>
   <ul>
     <li>❌ No free matches after registration</li>
-    <li>❌ No refunds after access is granted</li>
-    <li>✔️ Only disciplined staking is advised</li>
+    <li>❌ No refunds after access</li>
+    <li>✔️ Only disciplined staking</li>
     <li>✔️ VIP information must not be shared</li>
   </ul>
-  <div class="notice">
-    ⚠️ This service is for experienced and responsible users only. Registration confirms acceptance of all terms.
-  </div>
+  <div class="notice">⚠️ Service for experienced and responsible users only. Registration confirms acceptance of all terms.</div>
 </section>
 
-<!-- PAYMENT / FEES -->
 <section class="section container payment">
   <h2>Registration Fees & Countries</h2>
-  <p>We accept registrations from different countries. Fees are as follows:</p>
+  <p>We accept registrations from multiple countries. Fees below:</p>
   <table class="fees-table">
     <tr><th>Country</th><th>Fee</th></tr>
     <tr><td>Kenya</td><td>Ksh 750</td></tr>
@@ -142,60 +211,135 @@ footer{background:#0a0a0a;margin-top:60px;padding:50px 20px;text-align:center;fo
     <tr><td>Malawi</td><td>MWK 20,000</td></tr>
     <tr><td>Zambia</td><td>ZMW 250</td></tr>
   </table>
-  <p style="margin-top:15px;">After contacting us via WhatsApp, payment instructions will be provided. All payments are verified before VIP access is granted.</p>
+  <p style="margin-top:15px;">After contacting us via WhatsApp, payment instructions will be provided. All payments verified before VIP access.</p>
 </section>
 
-<!-- TESTIMONIALS -->
+<section class="section container">
+  <h2>Elite Stats</h2>
+  <div class="counters">
+    <div class="counter-box">
+      <h3 class="counter" data-target="1200">0</h3>
+      <p>VIP Members</p>
+    </div>
+    <div class="counter-box">
+      <h3 class="counter" data-target="15">0</h3>
+      <p>Countries Served</p>
+    </div>
+    <div class="counter-box">
+      <h3 class="counter" data-target="3500">0</h3>
+      <p>Matches Provided</p>
+    </div>
+  </div>
+</section>
+
 <section class="section container">
   <h2>Member Feedback</h2>
   <div class="testimonials">
-    <div class="testimonial">
-      <strong>VIP Member</strong>
-      Consistent structure and serious administration. This is not for unserious people.
-    </div>
-    <div class="testimonial">
-      <strong>Registered Client</strong>
-      Clear rules, communication, and professional handling.
-    </div>
-    <div class="testimonial">
-      <strong>Elite VIP User</strong>
-      Access is controlled, keeping quality high.
-    </div>
+    <div class="testimonial"><strong>VIP Member</strong>Consistent structure and serious administration. Not for unserious people.</div>
+    <div class="testimonial"><strong>Registered Client</strong>Clear rules, communication, and professional handling.</div>
+    <div class="testimonial"><strong>Elite VIP User</strong>Access is controlled, keeping quality high.</div>
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="section container">
   <h2>Frequently Asked Questions</h2>
   <div class="faq">
-    <div>
-      <strong>Is registration compulsory?</strong>
-      Yes. No VIP information is shared without registration.
-    </div>
-    <div>
-      <strong>Do you offer free trials?</strong>
-      No. This is a closed VIP service.
-    </div>
-    <div>
-      <strong>How do I join?</strong>
-      Click the WhatsApp button and follow the registration steps.
-    </div>
-    <div>
-      <strong>How is payment verified?</strong>
-      Payment is verified via secure channels before VIP access is granted.
-    </div>
+    <div><strong>Is registration compulsory?</strong>Yes. No VIP information without registration.</div>
+    <div><strong>Do you offer free trials?</strong>No. This is a closed VIP service.</div>
+    <div><strong>How do I join?</strong>Click the WhatsApp button and follow registration steps.</div>
+    <div><strong>How is payment verified?</strong>Payment is verified before VIP access is granted.</div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
 <section class="section container cta">
   <a class="btn" href="https://wa.me/254113206503">CONTACT & REGISTER NOW</a>
 </section>
 
-<footer>
-  © 2025 Elite Company. All Rights Reserved.<br>
-  This website is for informational purposes only.
-</footer>
+<footer>© 2025 Elite Company. All Rights Reserved.<br>This website is for informational purposes only.</footer>
+
+<a href="https://wa.me/254113206503" class="whatsapp-float">💬</a>
+
+<script>
+// Scroll animations
+const sections = document.querySelectorAll('header, .section');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('show');}
+  });
+},{threshold:0.2});
+sections.forEach(sec=>observer.observe(sec));
+
+// Sticky progress bar
+window.onscroll = function(){
+  let scrollTop = document.documentElement.scrollTop;
+  let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  let scrolled = (scrollTop / scrollHeight) * 100;
+  document.getElementById('progress-bar').style.width = scrolled + '%';
+};
+
+// Counters
+const counters = document.querySelectorAll('.counter');
+counters.forEach(counter=>{
+  counter.innerText='0';
+  const updateCounter=()=>{
+    const target=+counter.getAttribute('data-target');
+    const current=+counter.innerText;
+    const increment=target/200;
+    if(current<target){counter.innerText=Math.ceil(current+increment);setTimeout(updateCounter,10);}
+    else{counter.innerText=target;}
+  };
+  const counterObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){updateCounter(); counterObserver.unobserve(counter);}
+    });
+  },{threshold:1});
+  counterObserver.observe(counter);
+});
+
+// PARTICLES
+const canvas=document.getElementById('particle-canvas');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let particles=[];
+const particleCount=80;
+for(let i=0;i<particleCount;i++){
+  particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,dx:(Math.random()-0.5)*0.5,dy:(Math.random()-0.5)*0.5,intensity:0.3});
+}
+function animateParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(let i=0;i<particles.length;i++){
+    let p=particles[i];
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(37,211,102,${p.intensity})`;
+    ctx.fill();
+    p.x+=p.dx;
+    p.y+=p.dy;
+    if(p.x<0||p.x>canvas.width)p.dx*=-1;
+    if(p.y<0||p.y>canvas.height)p.dy*=-1;
+  }
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+window.addEventListener('resize',()=>{
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+});
+
+// Particle intensification on section scroll
+const particleSections = document.querySelectorAll('.section, header');
+const particleObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      particles.forEach(p=>p.intensity=0.7);
+    } else {
+      particles.forEach(p=>p.intensity=0.3);
+    }
+  });
+},{threshold:0.3});
+particleSections.forEach(sec=>particleObserver.observe(sec));
+</script>
 
 </body>
-  </html>
+        </html>
