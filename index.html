@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elite VIP Fixed Matches | Official Registration</title>
-<meta name="description" content="Elite VIP Fixed Matches. High-accuracy VIP correct scores. Registration required. Serious members only.">
+<meta name="description" content="Elite VIP Fixed Matches. Professional VIP correct score service. Registration required. Strictly for serious members.">
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
 
 <style>
+/* BASE STYLES */
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Arial',sans-serif;}
 body{background:#0a0a0a;color:#fff;line-height:1.6;scroll-behavior:smooth;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
@@ -16,140 +17,83 @@ img:hover{transform:scale(1.05);}
 .container{max-width:1100px;margin:auto;padding:20px;position:relative;z-index:2;}
 
 /* PARTICLE CANVAS */
-#particle-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:0;
-}
+#particle-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 
 /* STICKY PROGRESS BAR */
-#progress-container{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:6px;
-  background:#222;
-  z-index:9999;
-}
-#progress-bar{
-  height:6px;
-  width:0%;
-  background:#25D366;
-  transition:width 0.25s;
-}
+#progress-container{position:fixed;top:0;left:0;width:100%;height:6px;background:#222;z-index:9999;}
+#progress-bar{height:6px;width:0%;background:#25D366;transition:width 0.25s;}
 
 /* ANIMATED BACKGROUNDS */
-@keyframes gradientSlide {
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
+@keyframes gradientSlide{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
-/* HERO */
-header{
-  background:linear-gradient(-45deg,#0b0b0b,#111,#0b0b0b,#111);
-  background-size:400% 400%;
-  animation:gradientSlide 20s ease infinite;
-  padding:60px 20px;
-  text-align:center;
-  border-bottom:4px solid #25D366;
-  position:relative;
-  opacity:0;
-  transform:translateY(-20px);
-  transition:all 1s ease-out;
-  z-index:1;
-}
+/* HEADER */
+header{background:linear-gradient(-45deg,#0b0b0b,#111,#0b0b0b,#111);background-size:400% 400%;animation:gradientSlide 20s ease infinite;padding:80px 20px;text-align:center;border-bottom:4px solid #25D366;position:relative;opacity:0;transform:translateY(-20px);transition:all 1s ease-out;z-index:1;}
 header.show{opacity:1;transform:translateY(0);}
-header h1{font-size:3rem;margin:15px 0 10px;}
+header h1{font-size:3rem;margin:20px 0 15px;}
 header span{color:#25D366;}
-header p{max-width:800px;margin:auto;color:#ccc;font-size:1.1rem;margin-bottom:25px;}
-header img.profile{width:150px;height:150px;border-radius:50%;border:4px solid #25D366;margin-top:20px;object-fit:cover;}
+header p{max-width:850px;margin:auto;color:#ccc;font-size:1.15rem;margin-bottom:30px;}
+header img.profile{width:160px;height:160px;border-radius:50%;border:4px solid #25D366;margin-top:20px;object-fit:cover;}
 
 /* BUTTONS */
-.btn{display:inline-block;padding:18px 45px;background:#25D366;color:#000;font-weight:bold;font-size:1.15rem;border-radius:12px;transition:.3s;margin-top:20px;}
+.btn{display:inline-block;padding:18px 50px;background:#25D366;color:#000;font-weight:bold;font-size:1.2rem;border-radius:14px;transition:.3s;margin-top:20px;}
 .btn:hover{transform:scale(1.08);box-shadow:0 15px 35px rgba(37,211,102,.5);}
 
 /* SECTIONS */
-.section{background:#111;margin:50px 0;border-radius:16px;padding:40px 25px;box-shadow:0 0 25px rgba(0,0,0,0.5);opacity:0;transform:translateY(20px);transition:all 1s ease-out;position:relative;z-index:1;}
+.section{background:#111;margin:50px 0;border-radius:16px;padding:50px 30px;box-shadow:0 0 25px rgba(0,0,0,0.5);opacity:0;transform:translateY(20px);transition:all 1s ease-out;position:relative;z-index:1;}
 .section.show{opacity:1;transform:translateY(0);}
-.section h2{text-align:center;margin-bottom:25px;font-size:2.2rem;}
-.section p{text-align:center;color:#ccc;max-width:900px;margin:auto 0 25px;line-height:1.7;}
-ul{list-style:none;max-width:800px;margin:20px auto;}
-ul li{padding:12px 0;border-bottom:1px solid #222;font-size:1rem;transition:all 0.3s;}
+.section h2{text-align:center;margin-bottom:25px;font-size:2.5rem;color:#fff;}
+.section p{text-align:center;color:#ccc;max-width:950px;margin:auto 0 25px;line-height:1.8;}
+ul{list-style:none;max-width:900px;margin:20px auto;}
+ul li{padding:14px 0;border-bottom:1px solid #222;font-size:1.1rem;transition:all 0.3s;}
 ul li:last-child{border:none;}
 ul li:hover{color:#25D366;transform:translateX(5px);}
 
 /* COUNTERS */
-.counters{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:30px;}
-.counter-box{
-  background:linear-gradient(45deg,#111,#222,#111,#222);
-  background-size:400% 400%;
-  animation:gradientSlide 15s ease infinite;
-  padding:25px;border-radius:12px;min-width:140px;box-shadow:0 4px 15px rgba(0,0,0,0.5);text-align:center;
-}
-.counter-box h3{font-size:2rem;color:#25D366;margin-bottom:10px;}
+.counters{display:flex;justify-content:center;gap:50px;flex-wrap:wrap;margin-top:40px;}
+.counter-box{background:linear-gradient(45deg,#111,#222,#111,#222);background-size:400% 400%;animation:gradientSlide 15s ease infinite;padding:30px;border-radius:14px;min-width:150px;box-shadow:0 4px 15px rgba(0,0,0,0.5);text-align:center;}
+.counter-box h3{font-size:2.2rem;color:#25D366;margin-bottom:10px;}
 .counter-box p{font-size:1rem;color:#ccc;}
 
 /* TESTIMONIALS */
-.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;margin-top:30px;}
-.testimonial{background:#151515;padding:25px;border-radius:12px;font-size:.95rem;color:#ccc;transition:all 0.3s;box-shadow:0 4px 20px rgba(0,0,0,0.5);}
-.testimonial strong{display:block;margin-bottom:10px;color:#fff;font-size:1.05rem;}
-.testimonial:hover{transform:translateY(-5px);box-shadow:0 8px 30px rgba(37,211,102,.4);}
+.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-top:40px;}
+.testimonial{background:#151515;padding:30px;border-radius:14px;font-size:1rem;color:#ccc;transition:all 0.3s;box-shadow:0 4px 25px rgba(0,0,0,0.5);}
+.testimonial strong{display:block;margin-bottom:12px;color:#fff;font-size:1.1rem;}
+.testimonial:hover{transform:translateY(-5px);box-shadow:0 10px 35px rgba(37,211,102,.4);}
 
 /* FAQ */
-.faq{max-width:900px;margin:35px auto;}
-.faq div{margin-bottom:20px;}
-.faq strong{display:block;margin-bottom:6px;font-size:1.05rem;}
+.faq{max-width:950px;margin:40px auto;}
+.faq div{margin-bottom:25px;}
+.faq strong{display:block;margin-bottom:8px;font-size:1.1rem;}
 
 /* NOTICES */
-.notice{background:#151515;border-left:5px solid #ff5555;padding:20px;margin-top:20px;color:#ddd;font-size:.95rem;transition:all 0.3s;}
+.notice{background:#151515;border-left:5px solid #ff5555;padding:25px;margin-top:20px;color:#ddd;font-size:1rem;transition:all 0.3s;}
 .notice:hover{border-left-color:#25D366;transform:translateX(3px);}
 
 /* PAYMENT / FEES TABLE */
-.payment{background:#222;border-radius:12px;padding:30px;margin-top:30px;color:#ccc;max-width:800px;margin:auto;text-align:center;box-shadow:0 0 20px rgba(0,0,0,.5);}
+.payment{background:#222;border-radius:14px;padding:35px;margin-top:30px;color:#ccc;max-width:900px;margin:auto;text-align:center;box-shadow:0 0 25px rgba(0,0,0,.5);}
 .payment strong{color:#fff;}
-.fees-table{width:100%;border-collapse:collapse;margin-top:15px;}
-.fees-table th,.fees-table td{padding:14px;text-align:center;border:1px solid #444;transition:all 0.3s;}
+.fees-table{width:100%;border-collapse:collapse;margin-top:20px;}
+.fees-table th,.fees-table td{padding:16px;text-align:center;border:1px solid #444;transition:all 0.3s;}
 .fees-table th{background:#25D366;color:#000;font-weight:bold;}
 .fees-table td{background:#151515;color:#ccc;}
 .fees-table tr:hover td{background:#25D366;color:#000;}
 
 /* FINAL CTA */
-.cta{text-align:center;margin-top:40px;}
+.cta{text-align:center;margin-top:50px;}
 
 /* FOOTER */
-footer{background:#0a0a0a;margin-top:60px;padding:50px 20px;text-align:center;font-size:.9rem;color:#777;box-shadow:0 -4px 20px rgba(0,0,0,.5);}
+footer{background:#0a0a0a;margin-top:80px;padding:60px 20px;text-align:center;font-size:1rem;color:#777;box-shadow:0 -4px 25px rgba(0,0,0,.5);}
 
 /* FLOATING WHATSAPP BUTTON */
-.whatsapp-float{
-  position:fixed;
-  bottom:25px;
-  right:25px;
-  background:#25D366;
-  color:#000;
-  border-radius:50%;
-  width:60px;
-  height:60px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:2rem;
-  z-index:1000;
-  box-shadow:0 8px 25px rgba(37,211,102,.5);
-  transition:all 0.3s;
-}
-.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 12px 35px rgba(37,211,102,.6);}
+.whatsapp-float{position:fixed;bottom:25px;right:25px;background:#25D366;color:#000;border-radius:50%;width:70px;height:70px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;z-index:1000;box-shadow:0 8px 30px rgba(37,211,102,.5);transition:all 0.3s;}
+.whatsapp-float:hover{transform:scale(1.15);box-shadow:0 12px 35px rgba(37,211,102,.6);}
 
 /* RESPONSIVE */
 @media(max-width:600px){
-  .fees-table th,.fees-table td{font-size:.9rem;padding:10px;}
+  .fees-table th,.fees-table td{font-size:.9rem;padding:12px;}
   header h1{font-size:2.2rem;}
-  .section h2{font-size:1.8rem;}
-  .counters{flex-direction:column;gap:20px;}
+  .section h2{font-size:2rem;}
+  .counters{flex-direction:column;gap:25px;}
 }
 </style>
 </head>
@@ -157,53 +101,51 @@ footer{background:#0a0a0a;margin-top:60px;padding:50px 20px;text-align:center;fo
 <body>
 
 <canvas id="particle-canvas"></canvas>
-
 <div id="progress-container"><div id="progress-bar"></div></div>
 
 <header id="hero">
-  <!-- Updated profile image -->
   <img src="coolkid.png" alt="Cool Kid" class="profile">
   <h1>Elite <span>VIP Fixed Matches</span></h1>
-  <p>Official registration platform for Elite Company. Strictly for serious members seeking professional VIP fixed correct score matches.</p>
-  <a class="btn" href="https://wa.me/254113206503">REGISTER VIA WHATSAPP</a>
+  <p>Official registration platform for Elite Company. Designed exclusively for disciplined VIP members seeking high-accuracy correct score matches.</p>
 </header>
 
 <section class="section container">
   <h2>About Elite VIP</h2>
-  <p>Elite VIP operates a closed, invitation-only system to maintain accuracy, discipline, and performance. No free trials or public predictions.</p>
+  <p>Elite VIP operates on strict, invitation-only standards to ensure accuracy, control, and member satisfaction. Every match prediction is carefully analyzed by our professional team.</p>
   <ul>
     <li>✔️ High-level VIP fixed correct score selections</li>
-    <li>✔️ Controlled member access</li>
-    <li>✔️ Professional stake management</li>
-    <li>✔️ Direct WhatsApp support</li>
-    <li>✔️ Registration required before access</li>
+    <li>✔️ Controlled and verified member access</li>
+    <li>✔️ Professional stake management guidance</li>
+    <li>✔️ Direct WhatsApp communication</li>
+    <li>✔️ Registration required before VIP access</li>
   </ul>
 </section>
 
 <section class="section container">
-  <h2>How It Works</h2>
+  <h2>Why Choose Elite VIP</h2>
   <ul>
-    <li>1️⃣ Contact us via WhatsApp using the button</li>
-    <li>2️⃣ Complete VIP registration process</li>
-    <li>3️⃣ Get added to the official Elite VIP channel</li>
-    <li>4️⃣ Receive VIP match details directly</li>
+    <li>✅ Trusted by over 1,200 VIP members globally</li>
+    <li>✅ Accurate match predictions with 3,500+ matches provided</li>
+    <li>✅ 15 countries served with verified registrations</li>
+    <li>✅ Professional support and guidance for serious bettors</li>
+    <li>✅ Safe and verified payment system</li>
   </ul>
 </section>
 
 <section class="section container">
-  <h2>VIP Rules & Conditions</h2>
+  <h2>Step-by-Step Registration</h2>
   <ul>
-    <li>❌ No free matches after registration</li>
-    <li>❌ No refunds after access</li>
-    <li>✔️ Only disciplined staking</li>
-    <li>✔️ VIP information must not be shared</li>
+    <li>1️⃣ Click the WhatsApp registration button at the bottom</li>
+    <li>2️⃣ Provide your details and confirm identity</li>
+    <li>3️⃣ Complete payment through our secure system</li>
+    <li>4️⃣ Get verified and added to the official Elite VIP channel</li>
+    <li>5️⃣ Receive VIP fixed match details directly</li>
   </ul>
-  <div class="notice">⚠️ Service for experienced and responsible users only. Registration confirms acceptance of all terms.</div>
 </section>
 
 <section class="section container payment">
   <h2>Registration Fees & Countries</h2>
-  <p>We accept registrations from multiple countries. Fees below:</p>
+  <p>We accept registrations from multiple countries. Fees are as follows:</p>
   <table class="fees-table">
     <tr><th>Country</th><th>Fee</th></tr>
     <tr><td>Kenya</td><td>Ksh 750</td></tr>
@@ -215,42 +157,45 @@ footer{background:#0a0a0a;margin-top:60px;padding:50px 20px;text-align:center;fo
     <tr><td>Malawi</td><td>MWK 20,000</td></tr>
     <tr><td>Zambia</td><td>ZMW 250</td></tr>
   </table>
-  <p style="margin-top:15px;">After contacting us via WhatsApp, payment instructions will be provided. All payments verified before VIP access.</p>
+  <p style="margin-top:15px;">Payment instructions are provided via WhatsApp. VIP access is granted only after verification.</p>
 </section>
 
 <section class="section container">
   <h2>Elite Stats</h2>
   <div class="counters">
-    <div class="counter-box">
-      <h3 class="counter" data-target="1200">0</h3>
-      <p>VIP Members</p>
-    </div>
-    <div class="counter-box">
-      <h3 class="counter" data-target="15">0</h3>
-      <p>Countries Served</p>
-    </div>
-    <div class="counter-box">
-      <h3 class="counter" data-target="3500">0</h3>
-      <p>Matches Provided</p>
-    </div>
+    <div class="counter-box"><h3 class="counter" data-target="1200">0</h3><p>VIP Members</p></div>
+    <div class="counter-box"><h3 class="counter" data-target="15">0</h3><p>Countries Served</p></div>
+    <div class="counter-box"><h3 class="counter" data-target="3500">0</h3><p>Matches Provided</p></div>
   </div>
+</section>
+
+<section class="section container">
+  <h2>VIP Rules & Conditions</h2>
+  <ul>
+    <li>❌ No free matches post-registration</li>
+    <li>❌ No refunds after access</li>
+    <li>✔️ Strict adherence to staking recommendations</li>
+    <li>✔️ VIP information must remain confidential</li>
+    <li>✔️ Professional and responsible use expected</li>
+  </ul>
+  <div class="notice">⚠️ Only experienced and responsible users are allowed. Registration confirms acceptance of all terms.</div>
 </section>
 
 <section class="section container">
   <h2>Member Feedback</h2>
   <div class="testimonials">
-    <div class="testimonial"><strong>VIP Member</strong>Consistent structure and serious administration. Not for unserious people.</div>
-    <div class="testimonial"><strong>Registered Client</strong>Clear rules, communication, and professional handling.</div>
-    <div class="testimonial"><strong>Elite VIP User</strong>Access is controlled, keeping quality high.</div>
+    <div class="testimonial"><strong>VIP Member</strong>Consistent structure and serious administration. Not for unserious users.</div>
+    <div class="testimonial"><strong>Registered Client</strong>Clear rules, prompt communication, and professional handling.</div>
+    <div class="testimonial"><strong>Elite VIP User</strong>Controlled access ensures high-quality information for all members.</div>
   </div>
 </section>
 
 <section class="section container">
   <h2>Frequently Asked Questions</h2>
   <div class="faq">
-    <div><strong>Is registration compulsory?</strong>Yes. No VIP information without registration.</div>
-    <div><strong>Do you offer free trials?</strong>No. This is a closed VIP service.</div>
-    <div><strong>How do I join?</strong>Click the WhatsApp button and follow registration steps.</div>
+    <div><strong>Is registration compulsory?</strong>Yes. VIP information is only available after registration.</div>
+    <div><strong>Do you offer free trials?</strong>No. This is a closed, professional VIP service.</div>
+    <div><strong>How do I join?</strong>Click the WhatsApp button at the bottom and follow the registration steps.</div>
     <div><strong>How is payment verified?</strong>Payment is verified before VIP access is granted.</div>
   </div>
 </section>
@@ -259,18 +204,19 @@ footer{background:#0a0a0a;margin-top:60px;padding:50px 20px;text-align:center;fo
   <a class="btn" href="https://wa.me/254113206503">CONTACT & REGISTER NOW</a>
 </section>
 
-<footer>© 2025 Elite Company. All Rights Reserved.<br>This website is for informational purposes only.</footer>
+<footer>
+  © 2025 Elite Company. All Rights Reserved.<br>
+  Official platform for professional VIP fixed matches.<br>
+  Contact: +254113206503 | WhatsApp Only
+</footer>
 
-<!-- FLOATING WHATSAPP BUTTON AT BOTTOM -->
 <a href="https://wa.me/254113206503" class="whatsapp-float">💬</a>
 
 <script>
 // Scroll animations
 const sections = document.querySelectorAll('header, .section');
 const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){entry.target.classList.add('show');}
-  });
+  entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show');}});
 },{threshold:0.2});
 sections.forEach(sec=>observer.observe(sec));
 
@@ -336,15 +282,11 @@ window.addEventListener('resize',()=>{
 const particleSections = document.querySelectorAll('.section, header');
 const particleObserver = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      particles.forEach(p=>p.intensity=0.7);
-    } else {
-      particles.forEach(p=>p.intensity=0.3);
-    }
+    if(entry.isIntersecting){particles.forEach(p=>p.intensity=0.7);}
+    else {particles.forEach(p=>p.intensity=0.3);}
   });
 },{threshold:0.3});
 particleSections.forEach(sec=>particleObserver.observe(sec));
 </script>
-
 </body>
-  </html>
+</html>
