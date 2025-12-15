@@ -33,8 +33,6 @@ header h1{font-size:3rem;margin:20px 0 15px;}
 header span{color:#25D366;}
 header p{max-width:850px;margin:auto;color:#ccc;font-size:1.15rem;margin-bottom:30px;}
 header img.profile{width:160px;height:160px;border-radius:50%;border:4px solid #25D366;margin-top:20px;object-fit:cover;}
-
-/* BUTTONS */
 .btn{display:inline-block;padding:18px 50px;background:#25D366;color:#000;font-weight:bold;font-size:1.2rem;border-radius:14px;transition:.3s;margin-top:20px;}
 .btn:hover{transform:scale(1.08);box-shadow:0 15px 35px rgba(37,211,102,.5);}
 
@@ -80,13 +78,16 @@ ul li:hover{color:#25D366;transform:translateX(5px);}
 
 /* FINAL CTA */
 .cta{text-align:center;margin-top:50px;}
+.cta .btn{margin:10px 10px 0 0;}
 
 /* FOOTER */
 footer{background:#0a0a0a;margin-top:80px;padding:60px 20px;text-align:center;font-size:1rem;color:#777;box-shadow:0 -4px 25px rgba(0,0,0,.5);}
 
-/* FLOATING WHATSAPP BUTTON */
+/* FLOATING BUTTONS */
 .whatsapp-float{position:fixed;bottom:25px;right:25px;background:#25D366;color:#000;border-radius:50%;width:70px;height:70px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;z-index:1000;box-shadow:0 8px 30px rgba(37,211,102,.5);transition:all 0.3s;}
 .whatsapp-float:hover{transform:scale(1.15);box-shadow:0 12px 35px rgba(37,211,102,.6);}
+.telegram-float{position:fixed;bottom:110px;right:25px;background:#0088cc;color:#fff;border-radius:50%;width:70px;height:70px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;z-index:1000;box-shadow:0 8px 30px rgba(0,136,204,.5);transition:all 0.3s;}
+.telegram-float:hover{transform:scale(1.15);box-shadow:0 12px 35px rgba(0,136,204,.6);}
 
 /* RESPONSIVE */
 @media(max-width:600px){
@@ -135,7 +136,7 @@ footer{background:#0a0a0a;margin-top:80px;padding:60px 20px;text-align:center;fo
 <section class="section container">
   <h2>Step-by-Step Registration</h2>
   <ul>
-    <li>1️⃣ Click the WhatsApp registration button at the bottom</li>
+    <li>1️⃣ Click the floating WhatsApp or Telegram button below</li>
     <li>2️⃣ Provide your details and confirm identity</li>
     <li>3️⃣ Complete payment through our secure system</li>
     <li>4️⃣ Get verified and added to the official Elite VIP channel</li>
@@ -157,7 +158,7 @@ footer{background:#0a0a0a;margin-top:80px;padding:60px 20px;text-align:center;fo
     <tr><td>Malawi</td><td>MWK 20,000</td></tr>
     <tr><td>Zambia</td><td>ZMW 250</td></tr>
   </table>
-  <p style="margin-top:15px;">Payment instructions are provided via WhatsApp. VIP access is granted only after verification.</p>
+  <p style="margin-top:15px;">Payment instructions are provided via WhatsApp or Telegram. VIP access is granted only after verification.</p>
 </section>
 
 <section class="section container">
@@ -195,13 +196,14 @@ footer{background:#0a0a0a;margin-top:80px;padding:60px 20px;text-align:center;fo
   <div class="faq">
     <div><strong>Is registration compulsory?</strong>Yes. VIP information is only available after registration.</div>
     <div><strong>Do you offer free trials?</strong>No. This is a closed, professional VIP service.</div>
-    <div><strong>How do I join?</strong>Click the WhatsApp button at the bottom and follow the registration steps.</div>
+    <div><strong>How do I join?</strong>Click the floating WhatsApp or Telegram button below and follow registration steps.</div>
     <div><strong>How is payment verified?</strong>Payment is verified before VIP access is granted.</div>
   </div>
 </section>
 
 <section class="section container cta">
-  <a class="btn" href="https://wa.me/254113206503">CONTACT & REGISTER NOW</a>
+  <a class="btn" href="https://wa.me/254113206503">CONTACT & REGISTER VIA WHATSAPP</a>
+  <a class="btn" href="https://t.me/coolkidtips" style="background:#0088cc;color:#fff;margin-left:20px;">JOIN TELEGRAM</a>
 </section>
 
 <footer>
@@ -210,7 +212,9 @@ footer{background:#0a0a0a;margin-top:80px;padding:60px 20px;text-align:center;fo
   Contact: +254113206503 | WhatsApp Only
 </footer>
 
+<!-- FLOATING BUTTONS -->
 <a href="https://wa.me/254113206503" class="whatsapp-float">💬</a>
+<a href="https://t.me/coolkidtips" class="telegram-float">📨</a>
 
 <script>
 // Scroll animations
