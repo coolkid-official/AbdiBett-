@@ -12,7 +12,7 @@
 body{background:#0a0a0a;color:#fff;line-height:1.6;scroll-behavior:smooth;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;transition:transform 0.3s;}
-img:hover{transform:scale(1.1);}
+img:hover{transform:scale(1.05);}
 .container{max-width:1100px;margin:auto;padding:20px;position:relative;z-index:2;}
 
 /* PARTICLE CANVAS */
@@ -64,10 +64,13 @@ header{
   z-index:1;
 }
 header.show{opacity:1;transform:translateY(0);}
-header h1{font-size:3rem;margin-bottom:10px;}
+header h1{font-size:3rem;margin:15px 0 10px;}
 header span{color:#25D366;}
-header p{max-width:800px;margin:auto;color:#ccc;font-size:1.1rem;}
-.btn{display:inline-block;padding:18px 45px;background:#25D366;color:#000;font-weight:bold;font-size:1.15rem;border-radius:12px;transition:.3s;}
+header p{max-width:800px;margin:auto;color:#ccc;font-size:1.1rem;margin-bottom:25px;}
+header img.profile{width:150px;height:150px;border-radius:50%;border:4px solid #25D366;margin-top:20px;object-fit:cover;}
+
+/* BUTTONS */
+.btn{display:inline-block;padding:18px 45px;background:#25D366;color:#000;font-weight:bold;font-size:1.15rem;border-radius:12px;transition:.3s;margin-top:20px;}
 .btn:hover{transform:scale(1.08);box-shadow:0 15px 35px rgba(37,211,102,.5);}
 
 /* SECTIONS */
@@ -93,7 +96,7 @@ ul li:hover{color:#25D366;transform:translateX(5px);}
 
 /* TESTIMONIALS */
 .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;margin-top:30px;}
-.testimonial{background:#151515;padding:25px;border-radius:12px;font-size:.95rem;color:#ccc;transition:all 0.3s;box-shadow:0 4px 20px rgba(0,0,0,.5);}
+.testimonial{background:#151515;padding:25px;border-radius:12px;font-size:.95rem;color:#ccc;transition:all 0.3s;box-shadow:0 4px 20px rgba(0,0,0,0.5);}
 .testimonial strong{display:block;margin-bottom:10px;color:#fff;font-size:1.05rem;}
 .testimonial:hover{transform:translateY(-5px);box-shadow:0 8px 30px rgba(37,211,102,.4);}
 
@@ -158,7 +161,8 @@ footer{background:#0a0a0a;margin-top:60px;padding:50px 20px;text-align:center;fo
 <div id="progress-container"><div id="progress-bar"></div></div>
 
 <header id="hero">
-  <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Elite VIP Logo">
+  <!-- Add your profile image here -->
+  <img src="your-face.jpg" alt="Cool Kid" class="profile">
   <h1>Elite <span>VIP Fixed Matches</span></h1>
   <p>Official registration platform for Elite Company. Strictly for serious members seeking professional VIP fixed correct score matches.</p>
   <a class="btn" href="https://wa.me/254113206503">REGISTER VIA WHATSAPP</a>
@@ -257,6 +261,7 @@ footer{background:#0a0a0a;margin-top:60px;padding:50px 20px;text-align:center;fo
 
 <footer>© 2025 Elite Company. All Rights Reserved.<br>This website is for informational purposes only.</footer>
 
+<!-- FLOATING WHATSAPP BUTTON AT BOTTOM -->
 <a href="https://wa.me/254113206503" class="whatsapp-float">💬</a>
 
 <script>
@@ -342,4 +347,4 @@ particleSections.forEach(sec=>particleObserver.observe(sec));
 </script>
 
 </body>
-        </html>
+</html>
