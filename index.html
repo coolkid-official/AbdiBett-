@@ -4,118 +4,211 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Elite VIP Fixed Matches | Verified VIP</title>
+<title>Elite VIP Fixed Matches | Official Registration</title>
 
-<meta name="description" content="Elite VIP Fixed Matches provides 350+ odds daily correct score insights. Verified VIP platform. Install our app for instant access.">
+<meta name="description" content="Elite VIP Fixed Matches provides 350+ odds daily correct score insights for disciplined VIP members. Responsible participation only.">
 
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- PWA -->
-<meta name="theme-color" content="#25d366">
-<link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
-
 <style>
 :root {
-  --primary:#25d366;
-  --accent:#0088cc;
-  --dark:#0a0a0a;
-  --light:#fff;
-  --muted:#ccc;
-  --card:#151515;
-  --radius:14px;
+  --primary: #25d366;
+  --accent: #0088cc;
+  --dark: #0a0a0a;
+  --light: #ffffff;
+  --text-light: #cccccc;
+  --bg-section: #111;
+  --bg-card: #151515;
+  --radius: 14px;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:var(--dark);color:var(--light);overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-
-header{
-  text-align:center;
-  padding:100px 20px;
-  border-bottom:3px solid var(--primary);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-.profile{
-  width:160px;height:160px;margin:auto;border-radius:50%;
-  background:radial-gradient(circle,#2cff88,#0bbf5a);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 30px rgba(37,211,102,.6);
-  position:relative;
+body {
+  background: var(--dark);
+  color: var(--light);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-.profile::after{
-  content:"✔ VERIFIED VIP";
-  position:absolute;
-  bottom:-28px;
-  background:#1da1f2;
-  color:#fff;
-  font-size:.7rem;
-  padding:4px 10px;
-  border-radius:20px;
+a { text-decoration: none; color: inherit; }
+
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
 }
 
-.profile span{color:#000;text-align:center;font-weight:700}
-.profile .elite{font-size:1.3rem}
-.profile .vip{font-size:2.2rem;letter-spacing:2px}
-
-header h1{margin-top:40px;font-size:2.8rem}
-header h1 span{color:var(--primary)}
-header p{max-width:800px;margin:15px auto;color:var(--muted)}
-
-.container{max-width:1100px;margin:auto;padding:40px 20px}
-
-.section{
-  background:#111;
-  padding:40px;
-  border-radius:var(--radius);
-  margin:40px 0;
-  box-shadow:0 0 15px rgba(0,0,0,.4)
+/* HEADER */
+header.hero {
+  text-align: center;
+  padding: 100px 20px;
+  border-bottom: 3px solid var(--primary);
+  position: relative;
+  z-index: 1;
 }
 
-.section h2{text-align:center;margin-bottom:20px}
-
-.counters{
-  display:flex;gap:40px;justify-content:center;flex-wrap:wrap
+/* VIP LOGO */
+.profile {
+  width: 160px;
+  height: 160px;
+  margin: auto;
+  border-radius: 50%;
+  background: radial-gradient(circle at top left, #2cff88, #0bbf5a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 30px rgba(37,211,102,0.6),
+              inset 0 0 20px rgba(0,0,0,0.4);
+  margin-bottom: 25px;
 }
-.counter-box{
-  background:var(--card);
-  padding:25px;
-  border-radius:var(--radius);
-  text-align:center;
-  width:180px
-}
-.counter-box h3{font-size:2.3rem;color:var(--primary)}
 
-.btn{
-  display:inline-block;padding:15px 35px;
-  border-radius:var(--radius);
-  font-weight:600;margin:10px
+.profile::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 3px solid rgba(37,211,102,0.7);
+  animation: pulse 2.5s infinite;
 }
-.btn-primary{background:var(--primary);color:#000}
-.btn-accent{background:var(--accent);color:#fff}
 
-footer{text-align:center;padding:25px;color:var(--muted)}
-
-/* ADMIN */
-#admin{
-  display:none;
+.profile span {
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #000;
 }
-.admin-input{
-  width:100%;padding:12px;margin:10px 0;border-radius:8px;border:none
+
+.profile .elite { font-size: 1.4rem; }
+.profile .vip { font-size: 2.3rem; letter-spacing: 2px; }
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+
+header h1 { font-size: 3rem; }
+header h1 span { color: var(--primary); }
+
+header p {
+  max-width: 800px;
+  margin: 15px auto 0;
+  color: var(--text-light);
+}
+
+/* CONTENT */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.section {
+  background: var(--bg-section);
+  padding: 40px 30px;
+  margin: 40px 0;
+  border-radius: var(--radius);
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  position: relative;
+  z-index: 1;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.section p,
+.section li {
+  color: var(--text-light);
+  margin-top: 8px;
+}
+
+ul, ol { margin-left: 20px; }
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  padding: 15px 35px;
+  border-radius: var(--radius);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 10px;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #000;
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn:hover { transform: scale(1.08); }
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #333;
+  text-align: center;
+}
+
+th {
+  background: var(--primary);
+  color: #000;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 25px;
+  color: var(--text-light);
+  font-size: 0.9rem;
 }
 
 /* MOBILE CTA */
-.mobile-cta{
-  display:none
+.mobile-cta {
+  display: none;
 }
-@media(max-width:600px){
-  .mobile-cta{
-    display:block;
-    position:fixed;bottom:0;width:100%;
-    background:var(--primary);
-    text-align:center;padding:15px;font-weight:700;color:#000
+
+@media (max-width: 600px) {
+  header h1 { font-size: 2.2rem; }
+
+  .mobile-cta {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--primary);
+    text-align: center;
+    padding: 15px;
+    z-index: 999;
+  }
+
+  .mobile-cta a {
+    font-weight: bold;
+    color: #000;
+    font-size: 1.2rem;
   }
 }
 </style>
@@ -123,7 +216,9 @@ footer{text-align:center;padding:25px;color:var(--muted)}
 
 <body>
 
-<header>
+<canvas id="particle-canvas"></canvas>
+
+<header class="hero">
   <div class="profile">
     <span>
       <div class="elite">ELITE</div>
@@ -132,92 +227,121 @@ footer{text-align:center;padding:25px;color:var(--muted)}
   </div>
 
   <h1>Elite <span>VIP Fixed Matches</span></h1>
-  <p>Verified VIP platform delivering <b>350+ odds daily correct score insights</b>. Responsible participation only.</p>
+  <p>Official VIP platform delivering <strong>350+ odds daily correct score insights</strong> for disciplined members. Responsible participation only.</p>
 </header>
 
 <main class="container">
 
 <section class="section">
-<h2>Elite Performance</h2>
-<div class="counters">
-  <div class="counter-box">
-    <h3 id="odds">0</h3>
-    <p>Odds Daily</p>
-  </div>
-  <div class="counter-box">
-    <h3 id="members">0</h3>
-    <p>VIP Members</p>
-  </div>
-  <div class="counter-box">
-    <h3>15+</h3>
-    <p>Countries</p>
-  </div>
-</div>
+<h2>About Elite VIP</h2>
+<ul>
+<li>350+ odds daily correct score insights</li>
+<li>Verified VIP-only access</li>
+<li>Structured stake management</li>
+<li>Direct WhatsApp support</li>
+</ul>
 </section>
 
-<section class="section" style="text-align:center">
+<section class="section">
+<h2>Why Choose Us</h2>
+<ul>
+<li>Trusted VIP community</li>
+<li><strong>350+ odds daily correct scores</strong></li>
+<li>15+ countries served</li>
+<li>Secure registration process</li>
+</ul>
+</section>
+
+<section class="section">
+<h2>Registration Steps</h2>
+<ol>
+<li>Contact via WhatsApp or Telegram</li>
+<li>Submit registration details</li>
+<li>Complete payment</li>
+<li>Get verified VIP access</li>
+</ol>
+</section>
+
+<section class="section">
+<h2>Registration Fees</h2>
+<table>
+<tr><th>Country</th><th>Fee</th></tr>
+<tr><td>Kenya</td><td>Ksh 750</td></tr>
+<tr><td>Uganda</td><td>UGX 25,000</td></tr>
+<tr><td>Tanzania</td><td>TZS 20,000</td></tr>
+<tr><td>South Africa</td><td>R 300</td></tr>
+<tr><td>Zimbabwe</td><td>USD 55</td></tr>
+<tr><td>Malawi</td><td>MWK 20,000</td></tr>
+<tr><td>Zambia</td><td>ZMW 250</td></tr>
+</table>
+</section>
+
+<section class="section">
+<h2>VIP Rules & Responsibility</h2>
+<ul>
+<li>No free matches after joining</li>
+<li>No refunds after access</li>
+<li>Confidential information</li>
+<li>Follow stake guidance strictly</li>
+</ul>
+<p style="color:#ff5555;margin-top:15px;">
+⚠ No guarantees implied. Participation is voluntary and subject to local laws.
+</p>
+</section>
+
+<section class="section" style="text-align:center;">
 <a class="btn btn-primary" href="https://wa.me/254113206503">CONTACT WHATSAPP</a>
-<a class="btn btn-accent" href="https://t.me/coolkidtips">JOIN TELEGRAM</a>
-</section>
-
-<!-- ADMIN PANEL -->
-<section id="admin" class="section">
-<h2>Admin Panel</h2>
-<input class="admin-input" id="oddsInput" placeholder="Daily Odds">
-<input class="admin-input" id="membersInput" placeholder="VIP Members">
-<button class="btn btn-primary" onclick="saveAdmin()">SAVE</button>
+<a class="btn btn-accent" href="https://t.me/coolkidtips" target="_blank">JOIN TELEGRAM</a>
 </section>
 
 </main>
 
-<footer>© 2025 Elite VIP Fixed Matches — Verified Platform</footer>
+<footer>
+© 2025 Elite VIP Fixed Matches. All Rights Reserved.
+</footer>
 
 <div class="mobile-cta">
 <a href="https://wa.me/254113206503">JOIN VIP VIA WHATSAPP</a>
 </div>
 
 <script>
-// COUNTERS
-let odds = localStorage.odds || 350;
-let members = localStorage.members || 1200;
+const canvas = document.getElementById("particle-canvas");
+const ctx = canvas.getContext("2d");
 
-function animate(id, value){
-  let i=0;
-  let el=document.getElementById(id);
-  let step=value/100;
-  let interval=setInterval(()=>{
-    i+=step;
-    el.innerText=Math.floor(i)+"+";
-    if(i>=value){el.innerText=value+"+";clearInterval(interval)}
-  },20);
+function resize() {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
 }
-animate("odds", odds);
-animate("members", members);
+resize();
+addEventListener("resize", resize);
 
-// ADMIN
-if(location.hash==="#admin"){
-  let pass=prompt("Admin Password:");
-  if(pass==="elitevip123"){
-    document.getElementById("admin").style.display="block";
-  }
-}
+const particles = Array.from({length: 80}, () => ({
+  x: Math.random()*canvas.width,
+  y: Math.random()*canvas.height,
+  r: Math.random()*2+1,
+  dx: (Math.random()-0.5)*0.5,
+  dy: (Math.random()-0.5)*0.5
+}));
 
-function saveAdmin(){
-  localStorage.odds=document.getElementById("oddsInput").value;
-  localStorage.members=document.getElementById("membersInput").value;
-  location.reload();
-}
+let last = 0;
+function animate(t) {
+  if (t - last < 30) return requestAnimationFrame(animate);
+  last = t;
 
-// PWA SERVICE WORKER (INLINE)
-if("serviceWorker" in navigator){
-  const sw = `
-    self.addEventListener('fetch', e=>{
-      e.respondWith(caches.open('vip').then(c=>c.match(e.request).then(r=>r||fetch(e.request))))
-    });
-  `;
-  const blob=new Blob([sw],{type:"text/javascript"});
-  navigator.serviceWorker.register(URL.createObjectURL(blob));
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = "rgba(37,211,102,0.3)";
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x<0||p.x>canvas.width) p.dx*=-1;
+    if (p.y<0||p.y>canvas.height) p.dy*=-1;
+  });
+  requestAnimationFrame(animate);
 }
+requestAnimationFrame(animate);
 </script>
 
 </body>
