@@ -20,7 +20,7 @@
   "@type": "Organization",
   "name": "Elite VIP Fixed Matches",
   "url": "https://yourwebsite.com",
-  "logo": "https://i.ibb.co/N6WLvwN/elite-vip-logo.png",
+  "logo": "images/myphoto.jpg",
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+254113206503",
@@ -91,13 +91,14 @@ header.hero {
   z-index: 1;
 }
 
+/* PROFILE PHOTO FROM FILES */
 .profile {
   width: 160px;
   height: 160px;
   margin: auto;
   border-radius: 50%;
   border: 4px solid var(--primary);
-  background: url("https://i.ibb.co/N6WLvwN/elite-vip-logo.png") center/cover no-repeat;
+  background: url("images/myphoto.jpg") center/cover no-repeat;
   box-shadow: 0 0 30px rgba(37,211,102,0.5);
   margin-bottom: 20px;
 }
@@ -242,13 +243,13 @@ footer {
 
 <canvas id="particle-canvas"></canvas>
 
-<header class="hero" role="banner">
+<header class="hero">
   <div class="profile"></div>
   <h1 class="hidden">Elite <span>VIP Fixed Matches</span></h1>
   <p class="hidden">Official VIP registration platform offering professional match insights with responsible participation.</p>
 </header>
 
-<main class="container" role="main">
+<main class="container">
 
 <section class="section hidden">
 <h2>About Elite VIP</h2>
@@ -317,8 +318,8 @@ footer {
 </section>
 
 <section class="section hidden" style="text-align:center;">
-<a class="btn btn-primary" href="https://wa.me/254113206503" aria-label="Contact via WhatsApp">CONTACT WHATSAPP</a>
-<a class="btn btn-accent" href="https://t.me/coolkidtips" target="_blank" rel="noopener noreferrer">JOIN TELEGRAM</a>
+<a class="btn btn-primary" href="https://wa.me/254113206503">CONTACT WHATSAPP</a>
+<a class="btn btn-accent" href="https://t.me/coolkidtips" target="_blank">JOIN TELEGRAM</a>
 </section>
 
 </main>
@@ -332,7 +333,7 @@ footer {
 </div>
 
 <script>
-// Reveal
+// Reveal animation
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
